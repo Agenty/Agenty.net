@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace Agenty.net
 {
-    class AgentyApi
+    public class AgentyApi : IDisposable
     {
+        public AgentyApi(string apiKey)
+        {
+
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
