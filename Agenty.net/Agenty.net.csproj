@@ -47,12 +47,15 @@
     <Compile Include="AgentyApi.cs" />
     <Compile Include="AgentyRequest.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Models\AgentyErrorResponse.cs" />
+    <Compile Include="Models\AgentyException.cs" />
     <Compile Include="Models\AgentyRequestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\AgentyContractResolver.cs" />
     <Compile Include="Serialization\AgentySerializer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

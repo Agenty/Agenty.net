@@ -2,6 +2,6 @@
 {
     public class AgentyRequestBase
     {
-        public string Key { get; }
+        public string Key { get; set; }
     }
 }
