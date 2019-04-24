@@ -2,11 +2,8 @@
 using Agenty.net.Serialization;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -63,9 +60,13 @@ namespace Agenty.net
                 catch (HttpRequestException inner)
                 {
                     if (error != null)
-                        thrown new 
+                        throw new AgentyException(error, inner);
+
+                    throw new AgentyException("Request failed", inner);
                 }
             }
+
+            return response;
         }
 
         private async Task<HttpResponseMessage> PostAsJsonAsync<T>(string requestUri, T value, CancellationToken c = default(CancellationToken))
