@@ -20,6 +20,8 @@ namespace Agenty.net
             _request = request;
         }
 
+        public string ApiKey => _request.ApiKey;
+
         public void Dispose()
         {
             if (HttpClient is DefaultHttpClient)

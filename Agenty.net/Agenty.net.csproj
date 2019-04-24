@@ -47,9 +47,14 @@
     <Compile Include="AgentyApi.cs" />
     <Compile Include="AgentyRequest.cs" />
     <Compile Include="DefaultHttpClient.cs" />
+    <Compile Include="IAgentyTeamApi.cs" />
     <Compile Include="Models\AgentyErrorResponse.cs" />
     <Compile Include="Models\AgentyException.cs" />
     <Compile Include="Models\AgentyRequestBase.cs" />
+    <Compile Include="Models\AgentyTeam\AgentyTeamModel.cs" />
+    <Compile Include="Models\AgentyTeam\AgentyTeamRequest.cs" />
+    <Compile Include="Models\AgentyTeam\AgentyTeamResponse.cs" />
+    <Compile Include="Models\AgentyTeam\GetAllAgentyTeamResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\AgentyContractResolver.cs" />
     <Compile Include="Serialization\AgentySerializer.cs" />

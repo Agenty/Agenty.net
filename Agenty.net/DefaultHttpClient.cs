@@ -11,7 +11,7 @@ namespace Agenty.net
         }
 
         private static readonly Lazy<Version> UserAgentVersionLazy = new Lazy<Version>(() => new AssemblyName(typeof(AgentyRequest).GetTypeInfo().Assembly.FullName).Version);
-        private static readonly Uri BaseUrl = new Uri("https://api.agenty.com/v1");
+        private static readonly Uri BaseUrl = new Uri("https://api.agenty.com/v1/");
 
         public static HttpClient CreateDefault()
         {
