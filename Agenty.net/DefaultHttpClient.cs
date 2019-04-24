@@ -19,7 +19,7 @@ namespace Agenty.net
             return ApplyDefaults(httpClient);
         }
 
-        public static HttpClient ApplyDefaults(DefaultHttpClient httpClient)
+        public static HttpClient ApplyDefaults(HttpClient httpClient)
         {
             httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 
