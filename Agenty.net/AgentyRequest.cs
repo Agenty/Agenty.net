@@ -29,6 +29,14 @@ namespace Agenty.net
             return await ReadAsJsonAsync<TResponse>(response.Content).ConfigureAwait(false);
         }
 
+        public async Task<TResponse> GetAsync<TResponse>(string requestUri)
+        {
+            var response = await GetAsJsonAsync<TResponse>($"{requestUri}?apikey={ApiKey}");
+            await EnsureSuccessAsync(response).ConfigureAwait(false);
+
+            return await ReadAsJsonAsync<TResponse>(response.Content).ConfigureAwait(false);
+        }
+
         private async Task<T> ReadAsJsonAsync<T>(HttpContent content)
         {
             using (var stream = await content.ReadAsStreamAsync().ConfigureAwait(false))
@@ -78,6 +86,11 @@ namespace Agenty.net
                 return await HttpClient.PostAsync(requestUri, content, c).ConfigureAwait(false);
             }
 
+        }
+
+        private async Task<HttpResponseMessage> GetAsJsonAsync<T>(string requestUri, CancellationToken c = default(CancellationToken))
+        {
+            return await HttpClient.GetAsync(requestUri).ConfigureAwait(false);
         }
 
         private StreamContent GetStreamContent<T>(T value, StreamWriter writer)

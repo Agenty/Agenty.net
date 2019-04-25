@@ -8,6 +8,8 @@ namespace Agenty.net
     public class AgentyApi : IDisposable
     {
         private readonly AgentyRequest _request;
+        private AgentyTeamApi _teams;
+
         public HttpClient HttpClient => _request.HttpClient;
         public AgentyApi(string apiKey) : this(new AgentyRequest(apiKey, DefaultHttpClient.CreateDefault()))
         {
@@ -21,6 +23,7 @@ namespace Agenty.net
         }
 
         public string ApiKey => _request.ApiKey;
+        public IAgentyTeamApi Teams => _teams ?? (_teams = new AgentyTeamApi(this));
 
         public void Dispose()
         {
@@ -31,6 +34,11 @@ namespace Agenty.net
         internal Task<TResponse> PostAsync<TRequest, TResponse>(string requestUri, TRequest value) where TRequest : AgentyRequestBase
         {
             return _request.PostAsync<TRequest, TResponse>(requestUri, value);
+        }
+
+        internal Task<TResponse> GetAsync<TResponse>(string requestUri)
+        {
+            return _request.GetAsync<TResponse>(requestUri);
         }
     }
 }

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AgentyApi.cs" />
     <Compile Include="AgentyRequest.cs" />
+    <Compile Include="AgentyTeamApi.cs" />
     <Compile Include="DefaultHttpClient.cs" />
     <Compile Include="IAgentyTeamApi.cs" />
     <Compile Include="Models\AgentyErrorResponse.cs" />

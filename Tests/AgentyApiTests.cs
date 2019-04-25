@@ -60,5 +60,14 @@ namespace Tests
                 // don't do anything
             }
         }
+
+        [Test]
+        public async Task AgentyTeamApi_default_client_is_disposed()
+        {
+            var api = new AgentyApi("api_key");
+            api.Dispose();
+
+            Assert.ThrowsAsync<ObjectDisposedException>(() => api.Teams.GetAllTeamMembersAsync());
+        }
     }
 }
