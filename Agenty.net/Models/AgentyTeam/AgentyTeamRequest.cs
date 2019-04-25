@@ -1,6 +1,6 @@
 ﻿namespace Agenty.net.Models.AgentyTeam
 {
-    public class AgentyTeamRequest : AgentyRequestBase
+    public class UpdateAgentyTeamRequest : AgentyRequestBase
     {
         public int UserId { get; set; }
         public string Email { get; set; }

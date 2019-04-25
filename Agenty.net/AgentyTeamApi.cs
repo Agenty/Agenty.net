@@ -41,7 +41,7 @@ namespace Agenty.net
 
         public Task<AgentyTeamResponse> UpdateTeamMemberAsync(string memberId, int userId, string email, string name, int roleId, string status)
         {
-            var model = new AgentyTeamRequest
+            var model = new UpdateAgentyTeamRequest
             {
                 UserId = userId,
                 Email = email,
@@ -50,7 +50,7 @@ namespace Agenty.net
                 Status = status
             };
 
-            return AgentyApi.PutAsync<AgentyTeamRequest, AgentyTeamResponse>($"team/{memberId}", model);
+            return AgentyApi.PutAsync<UpdateAgentyTeamRequest, AgentyTeamResponse>($"team/{memberId}", model);
         }
     }
 }
