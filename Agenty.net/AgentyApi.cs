@@ -40,5 +40,13 @@ namespace Agenty.net
         {
             return _request.GetAsync<TResponse>(requestUri);
         }
+        internal Task<TResponse> DeleteAsync<TResponse>(string requestUri)
+        {
+            return _request.DeleteAsync<TResponse>(requestUri);
+        }
+        internal Task<TResponse> PutAsync<TRequest, TResponse>(string requestUri, TRequest value) where TRequest : AgentyRequestBase
+        {
+            return _request.PutAsync<TRequest, TResponse>(requestUri, value);
+        } 
     }
 }

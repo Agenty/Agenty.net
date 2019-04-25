@@ -27,9 +27,25 @@ namespace Agenty.net
             return await ReadAsJsonAsync<TResponse>(response.Content).ConfigureAwait(false);
         }
 
+        public async Task<TResponse> PutAsync<TRequest, TResponse>(string requestUri, TRequest value) where TRequest : AgentyRequestBase
+        {
+            var response = await  PutAsJsonAsync($"{requestUri}?apikey={ApiKey}", value).ConfigureAwait(false);
+            await EnsureSuccessAsync(response).ConfigureAwait(false);
+
+            return await ReadAsJsonAsync<TResponse>(response.Content).ConfigureAwait(false);
+        }
+
         public async Task<TResponse> GetAsync<TResponse>(string requestUri)
         {
             var response = await GetAsJsonAsync<TResponse>($"{requestUri}?apikey={ApiKey}");
+            await EnsureSuccessAsync(response).ConfigureAwait(false);
+
+            return await ReadAsJsonAsync<TResponse>(response.Content).ConfigureAwait(false);
+        }
+
+        public async Task<TResponse> DeleteAsync<TResponse>(string requestUri)
+        {
+            var response = await DeleteAsJsonAsync<TResponse>($"{requestUri}?apikey={ApiKey}");
             await EnsureSuccessAsync(response).ConfigureAwait(false);
 
             return await ReadAsJsonAsync<TResponse>(response.Content).ConfigureAwait(false);
@@ -83,12 +99,26 @@ namespace Agenty.net
             {
                 return await HttpClient.PostAsync(requestUri, content, c).ConfigureAwait(false);
             }
+        }
 
+        private async Task<HttpResponseMessage> PutAsJsonAsync<T>(string requestUri, T value, CancellationToken c = default(CancellationToken))
+        {
+            using (var stream = new MemoryStream())
+            using (var writer = new StreamWriter(stream))
+            using (var content = GetStreamContent(value, writer))
+            {
+                return await HttpClient.PutAsync(requestUri, content, c).ConfigureAwait(false);
+            }
         }
 
         private async Task<HttpResponseMessage> GetAsJsonAsync<T>(string requestUri, CancellationToken c = default(CancellationToken))
         {
             return await HttpClient.GetAsync(requestUri).ConfigureAwait(false);
+        }
+
+        private async Task<HttpResponseMessage> DeleteAsJsonAsync<T>(string requestUri, CancellationToken c = default(CancellationToken))
+        {
+            return await HttpClient.DeleteAsync(requestUri).ConfigureAwait(false);
         }
 
         private StreamContent GetStreamContent<T>(T value, StreamWriter writer)
