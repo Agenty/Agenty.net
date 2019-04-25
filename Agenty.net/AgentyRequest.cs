@@ -21,9 +21,7 @@ namespace Agenty.net
 
         public async Task<TResponse> PostAsync<TRequest, TResponse>(string requestUri, TRequest value) where TRequest : AgentyRequestBase
         {
-            value.Key = ApiKey;
-
-            var response = await PostAsJsonAsync(requestUri, value).ConfigureAwait(false);
+            var response = await PostAsJsonAsync($"{requestUri}?apikey={ApiKey}", value).ConfigureAwait(false);
             await EnsureSuccessAsync(response).ConfigureAwait(false);
 
             return await ReadAsJsonAsync<TResponse>(response.Content).ConfigureAwait(false);
