@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgentyAgentApi.cs" />
     <Compile Include="AgentyApi.cs" />
     <Compile Include="AgentyRequest.cs" />
     <Compile Include="AgentyTeamApi.cs" />
