@@ -9,6 +9,7 @@ namespace Agenty.net
     {
         private readonly AgentyRequest _request;
         private AgentyTeamApi _teams;
+        private AgentyJobApi _jobs;
 
         public HttpClient HttpClient => _request.HttpClient;
         public AgentyApi(string apiKey) : this(new AgentyRequest(apiKey, DefaultHttpClient.CreateDefault()))
@@ -24,6 +25,7 @@ namespace Agenty.net
 
         public string ApiKey => _request.ApiKey;
         public IAgentyTeamApi Teams => _teams ?? (_teams = new AgentyTeamApi(this));
+        public IAgentyJobApi Jobs => _jobs ?? (_jobs = new AgentyJobApi(this));
 
         public void Dispose()
         {
