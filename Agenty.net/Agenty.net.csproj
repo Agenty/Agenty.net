@@ -46,14 +46,17 @@
   <ItemGroup>
     <Compile Include="AgentyAgentApi.cs" />
     <Compile Include="AgentyApi.cs" />
+    <Compile Include="AgentyJobApi.cs" />
     <Compile Include="AgentyRequest.cs" />
     <Compile Include="AgentyTeamApi.cs" />
     <Compile Include="DefaultHttpClient.cs" />
+    <Compile Include="IAgentyJobApi.cs" />
     <Compile Include="IAgentyAgentApi.cs" />
     <Compile Include="IAgentyTeamApi.cs" />
     <Compile Include="Models\AgentyAgent\AgentyAgentModels.cs" />
     <Compile Include="Models\AgentyErrorResponse.cs" />
     <Compile Include="Models\AgentyException.cs" />
+    <Compile Include="Models\AgentyJob\AgentyJobModels.cs" />
     <Compile Include="Models\AgentyRequestBase.cs" />
     <Compile Include="Models\AgentyTeam\AgentyTeamModel.cs" />
     <Compile Include="Models\AgentyTeam\AgentyTeamRequest.cs" />
